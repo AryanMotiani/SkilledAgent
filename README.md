@@ -1,20 +1,3 @@
-## The Stress Test
-
-**The Attack:**
-Your desire to skip terminal commands completely and have the agent handle the GitHub repository creation purely through chat is a friction point. While advanced agents can execute terminal commands, relying on them to authenticate and handle remote Git operations dynamically often leads to hallucinated CLI arguments or authentication hangs. Second, your `/kickoff` workflow is currently hardcoded to force an interview (Phase 1). If you just dump a massive, pre-written PRD into the chat and say "use this," the agent might get confused between the hardcoded instruction to ask you questions and your new instruction to just read the document.
-
-**The Verdict:**
-Your plan **survives**, but your README needs conditional prompts. You must provide the agent with a specific "Bypass" prompt when you already have a PRD, instructing it to ingest your document, update `CONTEXT.md`, and skip the interview phase. Furthermore, since you want to learn deep backend and AI/ML architectures, your README must explicitly list the pedagogical laws you need to enforce on yourself so you don't forget to hold the agent accountable.
-
----
-
-Here is your definitive, copy-paste `README.md` guide. It serves as your operational manual, outlining exactly how to start projects dynamically and reminding you of the engineering laws you must enforce.
-
-Save this in your master template.
-
----
-
-```markdown
 # ⚙️ Agentic Skeleton: Operations & Command Guide
 
 This document is your personal flight manual. It dictates how to initialize projects, route workflows, and enforce rigorous engineering standards using the Agent Skills architecture. 
