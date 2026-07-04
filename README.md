@@ -1,6 +1,9 @@
 # ⚙️ Agentic Skeleton: Operations & Command Guide
 
-This document is your personal flight manual. It dictates how to initialize projects, route workflows, and enforce rigorous engineering standards using the Agent Skills architecture. 
+This repository contains all required AI skills, rules, and configuration. The following guide dictates how to bootstrap AI-assisted development using this template. 
+
+> [!NOTE]
+> This repository is intended to bootstrap AI-assisted development. After scaffolding, all development takes place in your project repository—not in the template repository.
 
 ---
 
@@ -17,22 +20,66 @@ As the Orchestrator, you must constantly hold the AI accountable to these standa
 
 ## 🚀 Quick Start: Scaffolding & Setup Guide
 
-To initialize your development folder with this skeleton (which pre-bundles all required skills, including `/kickoff`, `/tdd`, `/to-prd`, `/to-issues`, and `/grill-with-docs`) in a single step:
+This skeleton copies AI workflow and configuration files into your project directory. 
 
-### 1. Scaffold the Project
-Choose the command depending on your starting directory:
+### What Gets Copied
+The template scaffold includes:
+* **AI Skills:** Pre-configured capabilities (located in `.agents/skills/`) for standard developer tasks.
+* **CONTEXT.md:** Global rules, ubiquitous language, and system architecture definitions.
+* **AGENTS.MD:** Workspace mapping and skill routing tables.
+* **skills-lock.json:** Secure lockfile specifying installed capabilities.
 
-* **Setup a New Project in the Current Directory:**
-  ```bash
-  npx -y giget@latest github:AryanMotiani/agent-template .
-  ```
+> [!NOTE]
+> The scaffold ONLY adds AI workflow and configuration files. Your project source code remains untouched except where filenames conflict and `--force` is used.
 
-* **Inject Template into an Existing Folder:**
-  ```bash
-  npx -y giget@latest github:AryanMotiani/agent-template . --force
-  ```
+---
 
-*(Note: Since all skills are pre-copied, they are instantly available in `.agents/skills` without any secondary installation steps!)*
+## 🛤️ Choose Your Workflow
+
+### Workflow A — New Project
+If starting a brand new project in an empty directory:
+
+1. **Initialize Directory & Git:**
+   ```bash
+   mkdir MyProject
+   cd MyProject
+   git init
+   ```
+2. **Scaffold the Workspace:**
+   ```bash
+   npx -y giget@latest github:AryanMotiani/agent-template .
+   ```
+
+---
+
+### Workflow B — Existing Repository
+If injecting the template into your primary project repository:
+
+1. **Navigate to project directory:**
+   ```bash
+   cd your-existing-project-folder
+   ```
+2. **Scaffold with Force Overwrite:**
+   ```bash
+   npx -y giget@latest github:AryanMotiani/agent-template . --force
+   ```
+   > [!WARNING]
+   > Direct use of `--force` overwrites any files with the same name in the current directory. Commit or back up any important work before using it.
+
+---
+
+## 🔍 Verification & First Steps
+
+### 1. Verify Scaffolded Files
+Confirm that your target project directory now contains the following essential skeleton files:
+```text
+.agents/
+CONTEXT.md
+AGENTS.MD
+README.md
+skills-lock.json
+```
+*(Note: The skills are copied directly into the project and should be available to your AI agent. If they are not detected immediately, reload the workspace or restart the AI session.)*
 
 ### 2. Initiate the Project Kickoff (`/kickoff`)
 Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor), and start the `/kickoff` skill. Paste this prompt into the AI agent chat:
@@ -41,52 +88,9 @@ Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor),
 This command launches the Project Director workflow:
 * **The Spec & Tactical Interview:** The agent will grill you with questions to clarify database normalization, concurrency, and architecture rules, and automatically update `CONTEXT.md`.
 * **Verification Metrics:** The agent will prompt you to set deterministic success criteria (concurrency thresholds, test coverage, etc.).
-* **PRD & Backlog Generation:** Once the synthesized PRD is approved, the agent will convert it into actionable task list and populate issues using `/to-issues`.
+* **PRD & Backlog Generation:** Once the synthesized PRD is approved, the agent will convert it into an actionable task list and populate issues using `/to-issues`.
 
 ### 3. Implement Tasks under strict TDD
 Once the backlog issues are generated, pick up the first task (e.g., Issue #1 scaffold) and trigger the code execution loop:
 > "Let's resolve Issue #1. Activate the `/tdd` skill to implement it under the strict Red-Green-Refactor loop."
 
-
-
----
-
-## 🛤️ Phase 1: The Kickoff Routing
-
-Choose your path based on what you have prepared.
-
-### Path A: Starting from Scratch (Just an Idea)
-You have a basic concept but need the agent to help you design the architecture. 
-
-> **Prompt:** "I have a new project idea: [INSERT BRIEF IDEA]. Execute the `/kickoff` skill. Begin Phase 1 and interview me to define the tech stack, data isolation, and architecture."
-
-### Path B: You Already Have a PRD or Implementation Plan
-You wrote the documentation beforehand and want the agent to ingest it, update its context, and skip the initial interview.
-
-> **Prompt:** "I already have the core implementation plan for this project. 
-> 
-> [PASTE YOUR PRD/PLAN HERE]
-> 
-> Execute the `/kickoff` skill, but **modify Phase 1**: Skip the interview questions. Instead, immediately ingest this documentation, extract the Ubiquitous Language, and update `CONTEXT.md` with the technical standards outlined above. Once complete, ask me for the Verification Metrics (Phase 2)."
-
----
-
-## 🎯 Phase 2: Verification & Backlog
-
-Once the alignment is complete (either via interview or ingestion), the agent will ask for your deterministic verification criteria. 
-
-**Example responses to give the agent:**
-* "API endpoints must pass 100% of test cases under 100ms."
-* "The data ingestion pipeline must be completely decoupled from the user-facing API."
-* "The database must strictly follow BCNF."
-
-After you lock the criteria, authorize the agent to move forward:
-> **Prompt:** "Verification criteria locked. Execute Phase 3 to finalize the PRD and run `/to-issues` to populate the backlog. Issue #1 must be the project directory scaffolding."
-
----
-
-## 🛠️ Phase 3: Execution
-
-With your GitHub/Linear issues created, drop into the strict engineering loop. Pick up the first issue and paste:
-
-> **Prompt:** "The backlog is ready. Activate the `/tdd` skill to implement Issue #1. Follow the strict Red-Green-Refactor loop. Ensure all actions align with the architectural rules now defined in `CONTEXT.md`."
