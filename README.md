@@ -15,6 +15,42 @@ As the Orchestrator, you must constantly hold the AI accountable to these standa
 
 ---
 
+## 🚀 Quick Start: Setup & Usage Guide
+
+To successfully configure, initialize, and run this agent-template for your development:
+
+### 1. Open the Template Workspace
+Ensure this template repository folder is open as the root workspace in your IDE (e.g. VS Code, Cursor) where your AI agent is active.
+
+### 2. Configure Git Repository
+Ensure Git is initialized in the workspace and connected to your target remote repository so the agent can properly commit code and organize files:
+* **PowerShell (Windows):**
+  ```powershell
+  git init
+  # Run this if you want to connect to a new/existing remote repository:
+  # git remote add origin <your-repository-url>
+  ```
+* **Bash (macOS/Linux):**
+  ```bash
+  git init
+  # git remote add origin <your-repository-url>
+  ```
+
+### 3. Initiate the Project Kickoff (`/kickoff`)
+To start building your actual project within this skeleton, tell the agent to run the `/kickoff` skill. Paste the kickoff prompt into the AI chat:
+> "I have a new project idea: `[INSERT YOUR PROJECT IDEA/CONCEPT]`. Run the `/kickoff` skill. Begin Phase 1 and interview me to define the tech stack, data isolation, and architecture."
+
+This command launches the Project Director workflow:
+* **The Spec & Tactical Interview:** The agent will grill you with questions to clarify database normalization, concurrency, and architecture rules, and automatically update `CONTEXT.md`.
+* **Verification Metrics:** The agent will prompt you to set deterministic success criteria (concurrency thresholds, test coverage, etc.).
+* **PRD & Backlog Generation:** Once the synthesized PRD is approved, the agent will convert it into actionable task list and populate issues using `/to-issues`.
+
+### 4. Implement Tasks under strict TDD
+Once the backlog issues are generated, pick up the first task (e.g., Issue #1 scaffold) and trigger the code execution loop:
+> "Let's resolve Issue #1. Activate the `/tdd` skill to implement it under the strict Red-Green-Refactor loop."
+
+---
+
 ## 🚀 Phase 0: Agent-Driven Initialization
 
 If you want to skip manual terminal setup and let the AI handle the boilerplate, open a completely empty folder in your IDE, open your AI chat, and paste this exact prompt:
