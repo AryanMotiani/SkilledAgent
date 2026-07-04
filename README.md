@@ -15,46 +15,27 @@ As the Orchestrator, you must constantly hold the AI accountable to these standa
 
 ---
 
-## 🚀 Quick Start: Setup & Usage Guide
+## 🚀 Quick Start: Scaffolding & Setup Guide
 
-To successfully configure, initialize, and run this agent-template for your development:
+To initialize your development folder with this skeleton (which pre-bundles all required skills, including `/kickoff`, `/tdd`, `/to-prd`, `/to-issues`, and `/grill-with-docs`) in a single step:
 
-### 1. Open the Template Workspace
-Ensure this template repository folder is open as the root workspace in your IDE (e.g. VS Code, Cursor) where your AI agent is active.
+### 1. Scaffold the Project
+Choose the command depending on your starting directory:
 
-### 2. Configure Git Repository
-Ensure Git is initialized in the workspace and connected to your target remote repository.
-
-* **If git is already initialized pointing to agent-template (e.g. you cloned this project directly):**
-  Change the remote URL to your new repository:
+* **Setup a New Project in the Current Directory:**
   ```bash
-  git remote set-url origin <your-repository-url>
+  npx -y giget@latest github:AryanMotiani/agent-template .
   ```
 
-* **If you want to start with a fresh git commit history:**
-  Delete the existing git database and re-initialize it:
-  * **PowerShell (Windows):**
-    ```powershell
-    Remove-Item -Recurse -Force .git
-    git init
-    git remote add origin <your-repository-url>
-    ```
-  * **Bash (macOS/Linux):**
-    ```bash
-    rm -rf .git
-    git init
-    git remote add origin <your-repository-url>
-    ```
-
-* **If starting in a completely new/empty folder:**
-  Initialize git and add your remote:
+* **Inject Template into an Existing Folder:**
   ```bash
-  git init
-  git remote add origin <your-repository-url>
+  npx -y giget@latest github:AryanMotiani/agent-template . --force
   ```
 
-### 3. Initiate the Project Kickoff (`/kickoff`)
-To start building your actual project within this skeleton, tell the agent to run the `/kickoff` skill. Paste the kickoff prompt into the AI chat:
+*(Note: Since all skills are pre-copied, they are instantly available in `.agents/skills` without any secondary installation steps!)*
+
+### 2. Initiate the Project Kickoff (`/kickoff`)
+Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor), and start the `/kickoff` skill. Paste this prompt into the AI agent chat:
 > "I have a new project idea: `[INSERT YOUR PROJECT IDEA/CONCEPT]`. Run the `/kickoff` skill. Begin Phase 1 and interview me to define the tech stack, data isolation, and architecture."
 
 This command launches the Project Director workflow:
@@ -62,29 +43,10 @@ This command launches the Project Director workflow:
 * **Verification Metrics:** The agent will prompt you to set deterministic success criteria (concurrency thresholds, test coverage, etc.).
 * **PRD & Backlog Generation:** Once the synthesized PRD is approved, the agent will convert it into actionable task list and populate issues using `/to-issues`.
 
-### 4. Implement Tasks under strict TDD
+### 3. Implement Tasks under strict TDD
 Once the backlog issues are generated, pick up the first task (e.g., Issue #1 scaffold) and trigger the code execution loop:
 > "Let's resolve Issue #1. Activate the `/tdd` skill to implement it under the strict Red-Green-Refactor loop."
 
----
-
-## 🚀 Phase 0: Agent-Driven Initialization & Scaffolding
-
-To quickly scaffold a new project or initialize an existing folder with this template (which pre-bundles all required skills, including `/kickoff`, `/tdd`, `/to-prd`, `/to-issues`, and `/grill-with-docs`) in a single step, run the following:
-
-### Setup a New Project in the Current Directory
-For a brand new project, execute this single terminal command:
-```bash
-npx -y giget@latest github:AryanMotiani/agent-template .
-```
-
-### Alternatively, Add the Template to an Existing Project Folder
-Run this command to force-copy the skeleton and skills into your existing project:
-```bash
-npx -y giget@latest github:AryanMotiani/agent-template . --force
-```
-
-*(Note: Since all skills are pre-copied, they are instantly available without any secondary installation steps!)*
 
 
 ---
