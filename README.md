@@ -23,17 +23,34 @@ To successfully configure, initialize, and run this agent-template for your deve
 Ensure this template repository folder is open as the root workspace in your IDE (e.g. VS Code, Cursor) where your AI agent is active.
 
 ### 2. Configure Git Repository
-Ensure Git is initialized in the workspace and connected to your target remote repository so the agent can properly commit code and organize files:
-* **PowerShell (Windows):**
-  ```powershell
-  git init
-  # Run this if you want to connect to a new/existing remote repository:
-  # git remote add origin <your-repository-url>
+Ensure Git is initialized in the workspace and connected to your target remote repository.
+
+* **If git is already initialized pointing to agent-template (e.g. you cloned this project directly):**
+  Change the remote URL to your new repository:
+  ```bash
+  git remote set-url origin <your-repository-url>
   ```
-* **Bash (macOS/Linux):**
+
+* **If you want to start with a fresh git commit history:**
+  Delete the existing git database and re-initialize it:
+  * **PowerShell (Windows):**
+    ```powershell
+    Remove-Item -Recurse -Force .git
+    git init
+    git remote add origin <your-repository-url>
+    ```
+  * **Bash (macOS/Linux):**
+    ```bash
+    rm -rf .git
+    git init
+    git remote add origin <your-repository-url>
+    ```
+
+* **If starting in a completely new/empty folder:**
+  Initialize git and add your remote:
   ```bash
   git init
-  # git remote add origin <your-repository-url>
+  git remote add origin <your-repository-url>
   ```
 
 ### 3. Initiate the Project Kickoff (`/kickoff`)
@@ -51,15 +68,24 @@ Once the backlog issues are generated, pick up the first task (e.g., Issue #1 sc
 
 ---
 
-## 🚀 Phase 0: Agent-Driven Initialization
+## 🚀 Phase 0: Agent-Driven Initialization & Scaffolding
 
-If you want to skip manual terminal setup and let the AI handle the boilerplate, open a completely empty folder in your IDE, open your AI chat, and paste this exact prompt:
+To quickly scaffold a new project or initialize an existing folder with this template (which pre-bundles all required skills, including `/kickoff`, `/tdd`, `/to-prd`, `/to-issues`, and `/grill-with-docs`) in a single step, run the following:
 
-> **Prompt:** "I am starting a new project in this directory. Execute the following terminal commands to initialize the workspace:
-> 1. Run `git init`.
-> 2. Run `gh repo create [INSERT-PROJECT-NAME] --private --source=. --remote=origin` (I am already authenticated).
-> 3. Run `npx skills@latest add mattpocock/skills` and ask me how to answer the interactive prompts.
-> Do not generate any code yet."
+### Setup a New Project in the Current Directory
+For a brand new project, execute this single terminal command:
+```bash
+npx -y giget@latest github:AryanMotiani/agent-template .
+```
+
+### Alternatively, Add the Template to an Existing Project Folder
+Run this command to force-copy the skeleton and skills into your existing project:
+```bash
+npx -y giget@latest github:AryanMotiani/agent-template . --force
+```
+
+*(Note: Since all skills are pre-copied, they are instantly available without any secondary installation steps!)*
+
 
 ---
 
