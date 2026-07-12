@@ -8,11 +8,14 @@
   - `.agents/` or `.claude/`: Custom behaviors, commands, and templates. **Agent Instruction:** You MUST scan both `.agents/skills/` and `.claude/skills/` recursively, detect whichever directories exist in this workspace, and load all skills and rules from them.
 
 ## b. Skill Routing Table
-- User-Initiated Orchestration: `/kickoff` (Guides spec, validation definition, and lifecycle setup; supports starting from scratch or onboarding an existing codebase/plan via `/code-review`, `/grill-with-docs`, `/ubiquitous-language`, and a skeptical critique to update context).
+- User-Initiated Orchestration: `/kickoff` workflow (Guides planning, grilling, spec creation, and implementation lifecycle; supports starting from scratch or onboarding an existing codebase via `/wayfinder`, `/code-review`, `/grilling`, `/grill-with-docs`, and `/to-spec`).
 - Model-Initiated Utility Frameworks:
-  - Use `mattpocock/skills/to-prd` for functional system design synthesis.
-  - Use `mattpocock/skills/to-issues` for backlog distribution.
-  - Use `mattpocock/skills/tdd` for execution tracking.
+  - Use `/to-spec` for functional system design synthesis.
+  - Use `/to-tickets` for backlog distribution into tracer-bullet vertical slices.
+  - Use `/implement` for execution (uses `/tdd` and `/code-review` internally).
+  - Use `/wayfinder` for planning large efforts as a shared map of investigation tickets.
+  - Use `/grilling` or `/grill-with-docs` for deep interview sessions.
+  - Use `/prototype` for throwaway prototypes to answer design questions.
 
 ## c. Knowledge Architecture
 - Core engineering truths and design patterns are maintained continuously in `CONTEXT.md`.
@@ -20,20 +23,21 @@
 
 ## d. Project Lifecycle
 - **Starting from Scratch:**
-  1. Alignment Interview (`/kickoff` Path A)
-  2. Verification Definition
-  3. Task Deconstruction (`/to-issues`)
-  4. Red-Green-Refactor Implementation Loop (`/tdd`)
+  1. Planning & Exploration (`/wayfinder` — chart the map, surface decisions)
+  2. Deep Interview & Grilling (`/grilling` or `/grill-with-docs` — relentless Q&A to build shared understanding)
+  3. Spec Synthesis (`/to-spec`)
+  4. Task Deconstruction (`/to-tickets`)
+  5. Implementation Loop (`/implement` → `/tdd` → `/code-review`)
 - **Onboarding an Existing Project/Plan:**
-  1. Codebase & Spec Onboarding (`/kickoff` Path B)
-     - Code understanding and review (`/code-review` / manual scan)
+  1. Codebase & Spec Onboarding (`/kickoff` workflow)
+     - Code understanding and review (`/code-review`)
      - Plan / documentation ingestion and grilling (`/grill-with-docs`)
      - Domain glossary extraction (`/ubiquitous-language`)
      - Active gap analysis & skepticism loop with the user
      - Sync decisions and rules into `CONTEXT.md`
-  2. Verification Definition
-  3. Task & Gap Deconstruction (`/to-issues`)
-  4. Red-Green-Refactor Loop (`/tdd`)
+  2. Spec Synthesis (`/to-spec`)
+  3. Task & Gap Deconstruction (`/to-tickets`)
+  4. Implementation Loop (`/implement` → `/tdd` → `/code-review`)
 
 ## e. Working Rules
 - Hard Rule: Never skip writing a test case before building an API routing structure.

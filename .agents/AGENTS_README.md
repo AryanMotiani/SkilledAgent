@@ -25,6 +25,7 @@ This operations guide is copied into your project's `.agents/` directory.
 ### What Gets Copied
 The template scaffold includes:
 * **AI Skills:** Pre-configured capabilities (located in `.agents/skills/`) for standard developer tasks.
+* **Workflows:** Orchestration pipelines (located in `.agents/workflows/`) that chain skills together.
 * **CONTEXT.md:** Global rules, ubiquitous language, and system architecture definitions (located in `.agents/CONTEXT.md`).
 * **AGENTS.MD:** Workspace mapping and skill routing tables (located in `.agents/AGENTS.MD`).
 * **skills-lock.json:** Secure lockfile specifying installed capabilities (located in `.agents/skills-lock.json`).
@@ -75,6 +76,7 @@ Confirm that your target project directory now contains the following:
 ```text
 .agents/
   ├── skills/
+  ├── workflows/
   ├── CONTEXT.md
   ├── AGENTS.MD
   ├── AGENTS_README.md
@@ -83,17 +85,22 @@ Confirm that your target project directory now contains the following:
 *(Note: The skills are copied directly into the project and should be available to your AI agent. If they are not detected immediately, reload the workspace or restart the AI session.)*
 
 ### 2. Initiate the Project Kickoff (`/kickoff`)
-Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor), and start the `/kickoff` skill. Paste this prompt into the AI agent chat:
-> "I have a new project idea: `[INSERT YOUR PROJECT IDEA/CONCEPT]`. Run the `/kickoff` skill. Begin Phase 1 and interview me to define the tech stack, data isolation, and architecture."
+Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor), and start the `/kickoff` workflow. Paste this prompt into the AI agent chat:
+> "I have a new project idea: `[INSERT YOUR PROJECT IDEA/CONCEPT]`. Run the `/kickoff` workflow. Begin with the Wayfinder phase to map the project."
 
-This command launches the Project Director workflow:
-* **The Spec & Tactical Interview:** The agent will grill you with questions to clarify database normalization, concurrency, and architecture rules, and automatically update `.agents/CONTEXT.md`.
-* **Verification Metrics:** The agent will prompt you to set deterministic success criteria (concurrency thresholds, test coverage, etc.).
-* **PRD & Backlog Generation:** Once the synthesized PRD is approved, the agent will convert it into an actionable task list and populate issues using `/to-issues`.
+This launches the full orchestrated pipeline:
+* **Phase 1 — Wayfinder:** Chart the decision map, explore the problem space, surface unknowns.
+* **Phase 2 — Code Review (if existing code):** Analyze existing codebase against standards.
+* **Phase 3 — Grilling:** Relentless Q&A to build shared understanding — no holes, no ambiguity.
+* **Phase 4 — Spec Synthesis:** Generate the formal spec via `/to-spec`.
+* **Phase 5 — Ticket Breakdown:** Break the spec into tracer-bullet vertical-slice tickets via `/to-tickets`.
+* **Phase 6 — Implementation:** Execute tickets under TDD via `/implement`.
+* **Phase 7 — Post-Implementation Review:** Final `/code-review` pass.
+* **Phase 8 — Suggestions:** Ideas, problems, and improvements for the project.
 
 ### 3. Implement Tasks under strict TDD
-Once the backlog issues are generated, pick up the first task (e.g., Issue #1 scaffold) and trigger the code execution loop:
-> "Let's resolve Issue #1. Activate the `/tdd` skill to implement it under the strict Red-Green-Refactor loop."
+Once the tickets are generated, pick up the first ticket and trigger the implementation loop:
+> "Let's implement ticket #1. Use `/implement` to execute it under TDD."
 
 ---
 
