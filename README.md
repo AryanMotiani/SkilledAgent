@@ -1,43 +1,55 @@
-# ⚙️ Agentic Skeleton: Operations & Command Guide
+# ⚡ SkillFlux — Elite Developer Agent Workspace
 
-This repository contains pre-bundled AI skills and rules to bootstrap AI-assisted development.
+SkillFlux is a next-generation AI developer workspace and orchestration engine. By bundling 39 pre-configured cognitive skills and dynamic workflows directly inside your repository, SkillFlux bridges the gap between basic script generation and elite, test-driven systems engineering.
 
-To keep your root directory clean and make the template easily removable, the entire template resides inside the `.agents/` folder.
+The entire system is contained natively in the `.agents/` directory, keeping your project root pristine. It can be easily added to any project or deleted entirely with a single command.
 
-## 🚀 How to Install
-Run the following command in the root of your project directory:
+---
 
+## ✨ Flagship features of SkillFlux
+
+*   **Orchestration, Not Just Automation:** SkillFlux doesn't just run commands; it orchestrates the entire software development lifecycle end-to-end. It guides you from vague product ideas through architectural mapping, spec synthesis, automated ticket breakdown, TDD implementation, and post-implementation review.
+*   **Dynamic Skill Selection & Sequencing:** Rather than following a rigid scripting path, SkillFlux is truly agentic. Under the hood, it maintains a trigger-to-skill map. If you mention that database queries are slow, it immediately shifts context, explains, and proposes `/diagnosing-bugs`. If architecture feels messy, it suggests `/improve-codebase-architecture` to render an interactive HTML before-and-after visualization.
+*   **Abstraction from Complexity:** You don't need to read dozens of skill files or understand which command does what. By running `/kickoff`, the workspace guides you through the complex skill repository, letting you focus on answering questions and approving decisions while the system chooses the right skills underneath.
+*   **Rigorous Architectural Blueprinting:** SkillFlux enforces system design rigor. Coding never begins without an approved spec (`/to-spec`) and a complete breakdown of vertical-slice, tracer-bullet tickets (`/to-tickets`).
+*   **Conversational Grilling & Context Integration:** Through `/grilling` and `/grill-with-docs`, the agent will stress-test your design tree one question at a time. It identifies ambiguities, extracts a ubiquitous domain language dictionary, and writes it directly to `CONTEXT.md` before generating code.
+
+---
+
+## 📁 Repository structure
+
+Once installed, your workspace is supercharged with:
+*   `.agents/skills/` — 39 custom cognitive capabilities (e.g. `/wayfinder`, `/implement`, `/tdd`, `/code-review`, `/qa`, `/improve-codebase-architecture`).
+*   `.agents/workflows/` — Orchestrated markdown workflows (like `/kickoff`) that chain skills together.
+*   `.agents/CONTEXT.md` — The global source-of-truth for technical standards, ubiquitous language, and system design rules.
+*   `.agents/AGENTS.MD` — The instruction manual for agent routing tables.
+*   `.agents/AGENTS_README.md` — The operations & command guide.
+*   `.agents/skills-lock.json` — Lockfile specifying installed capabilities.
+
+---
+
+## 🚀 Installation & Removal
+
+### Hook up SkillFlux
+Run this command in the root of your project directory:
 ```bash
 npx -y giget@latest github:AryanMotiani/agent-template/.agents .agents
 ```
-*(Note: If you have forked or customized this repository, replace `AryanMotiani/agent-template` with your own GitHub username and repository name).*
+*(Note: If you have forked or customized the template, replace `AryanMotiani/agent-template` with your repository path).*
 
-This will download the `.agents/` folder into your project, containing all 39 custom pre-bundled skills, rules, and global configurations.
+### Run the Kickoff Workflow
+Once scaffolded, prompt your AI agent (like Claude Code or Gemini):
+> "I have a new project idea: `[Your Idea]`. Run the `/kickoff` workflow."
 
-## 📁 Repository Structure
-Once scaffolded, the workspace includes:
-- `.agents/skills/` - Isolated custom skills (`/kickoff`, `/tdd`, `/to-prd`, `/to-issues`, etc.)
-- `.agents/CONTEXT.md` - System context repository and domain terminology glossary
-- `.agents/AGENTS.MD` - AI orchestration instructions & routing guides
-- `.agents/AGENTS_README.md` - Detailed commands, workflows, and developer guide
+The agent will execute the 8-phase pipeline, driving your idea from a tentative concept into a working, automated TDD implementation.
 
-## 🗑️ How to Uninstall
-If you want to remove the template and all of its configurations completely from your project, run the command for your shell:
+### Clean Removal
+Delete the folder at any time to remove all AI behaviors—zero files are left in your repository root:
 
-**Linux / macOS (Bash/Zsh):**
-```bash
-rm -rf .agents
-```
+*   **Linux / macOS:** `rm -rf .agents`
+*   **PowerShell:** `Remove-Item -Recurse -Force .agents`
+*   **Command Prompt:** `rmdir /s /q .agents`
 
-**Windows (PowerShell):**
-```powershell
-Remove-Item -Recurse -Force .agents
-```
+---
 
-**Windows (CMD):**
-```cmd
-rmdir /s /q .agents
-```
-
-
-For detailed usage, refer to the operations guide at [.agents/AGENTS_README.md](.agents/AGENTS_README.md).
+For complete command details, refer to the operations guide at [.agents/AGENTS_README.md](.agents/AGENTS_README.md).
