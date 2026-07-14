@@ -264,6 +264,6 @@ rmdir /s /q .agents
 
 ## Contributing
 
-GitHub: [github.com/AryanMotiani/agent-template](https://github.com/AryanMotiani/agent-template)
+GitHub: [github.com/AryanMotiani/agent-template](https://github.com/AryanMotiani/SkilledAgent)
 
 For the full operations guide, see [.agents/AGENTS_README.md](.agents/AGENTS_README.md).
